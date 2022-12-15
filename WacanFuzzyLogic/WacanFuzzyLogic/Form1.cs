@@ -31,7 +31,7 @@ namespace WacanFuzzyLogic
             currentTemp.Add(new MembershipFunction("LM", 10.0, 12.0, 15.0, 17.0));
             currentTemp.Add(new MembershipFunction("MED", 15.0, 18.0, 21.0, 24.0));
             currentTemp.Add(new MembershipFunction("HM", 22.0, 26.0, 27.0, 29.0));
-            currentTemp.Add(new MembershipFunction("HIGH", 28.0, 30.0, 31.0, 33.0));
+            currentTemp.Add(new MembershipFunction("HIGH", 28.0, 30.0, 31.0, 37.0));
             myCurrent = new LinguisticVariable("CURRENT", currentTemp);
 
 
@@ -40,15 +40,15 @@ namespace WacanFuzzyLogic
             targetTemp.Add(new MembershipFunction("LM", 10.0, 12.0, 15.0, 17.0));
             targetTemp.Add(new MembershipFunction("MED", 15.0, 18.0, 21.0, 24.0));
             targetTemp.Add(new MembershipFunction("HM", 22.0, 26.0, 27.0, 29.0));
-            targetTemp.Add(new MembershipFunction("HIGH", 28.0, 30.0, 31.0, 33.0));
+            targetTemp.Add(new MembershipFunction("HIGH", 28.0, 30.0, 33.0, 37.0));
             myTarget = new LinguisticVariable("TARGET", targetTemp);
 
             output = new MembershipFunctionCollection();
-            output.Add(new MembershipFunction("LOW",0.0,0.0,2.0,4.0));
-            output.Add(new MembershipFunction("LM", 2.0, 4.0, 4.0, 6.0));
+            output.Add(new MembershipFunction("LOW",0.0,0.0,2.0,3.0));
+            output.Add(new MembershipFunction("LM", 2.5, 4.0, 4.0, 6.0));
             output.Add(new MembershipFunction("MED", 4.0, 6.0, 6.0, 8.0));
-            output.Add(new MembershipFunction("HM", 6.0, 8.0, 8.0, 10.0));
-            output.Add(new MembershipFunction("HIGH", 8.0, 10.0, 10.0, 10.0));
+            output.Add(new MembershipFunction("HM", 6.0, 8.0, 8.0, 9.0));
+            output.Add(new MembershipFunction("HIGH", 8.5, 10.0, 10.0, 10.0));
             myOutput = new LinguisticVariable("OUTPUT", output);
 
             
@@ -61,8 +61,8 @@ namespace WacanFuzzyLogic
 
             //HIGH
             myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS LOW) THEN OUTPUT IS HIGH"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS LM) THEN OUTPUT IS HIGH"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS MED) THEN OUTPUT IS HM"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS LM) THEN OUTPUT IS HM"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS MED) THEN OUTPUT IS MED"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS HM) THEN OUTPUT IS MED"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS HIGH) AND (TARGET IS HIGH) THEN OUTPUT IS LOW"));
 
@@ -70,27 +70,27 @@ namespace WacanFuzzyLogic
             myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS LOW) THEN OUTPUT IS HIGH"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS LM) THEN OUTPUT IS HM"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS MED) THEN OUTPUT IS HM"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS HM) THEN OUTPUT IS LOW"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS HIGH) THEN OUTPUT IS HIGH"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS HM) THEN OUTPUT IS LM"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS HM) AND (TARGET IS HIGH) THEN OUTPUT IS LOW"));
 
             //MED
             myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS LOW) THEN OUTPUT IS HIGH"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS LM) THEN OUTPUT IS HM"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS MED) THEN OUTPUT IS HM"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS HM) THEN OUTPUT IS HIGH"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS HIGH) THEN OUTPUT IS HIGH"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS MED) THEN OUTPUT IS MED"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS HM) THEN OUTPUT IS LM"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS MED) AND (TARGET IS HIGH) THEN OUTPUT IS LOW"));
 
             //LM
             myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS LOW) THEN OUTPUT IS HIGH"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS LM) THEN OUTPUT IS HM"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS MED) THEN OUTPUT IS HM"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS HM) THEN OUTPUT IS HIGH"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS HIGH) THEN OUTPUT IS HIGH"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS HM) THEN OUTPUT IS MED"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS LM) AND (TARGET IS HIGH) THEN OUTPUT IS LOW"));
 
             //LOW
-            myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS LOW) THEN OUTPUT IS LOW"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS LOW) THEN OUTPUT IS HM"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS LM) THEN OUTPUT IS HM"));
-            myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS MED) THEN OUTPUT IS LM"));
+            myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS MED) THEN OUTPUT IS MED"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS HM) THEN OUTPUT IS LM"));
             myrules.Add(new FuzzyRule("IF (CURRENT IS LOW) AND (TARGET IS HIGH) THEN OUTPUT IS LOW"));
         }
@@ -162,6 +162,11 @@ namespace WacanFuzzyLogic
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
