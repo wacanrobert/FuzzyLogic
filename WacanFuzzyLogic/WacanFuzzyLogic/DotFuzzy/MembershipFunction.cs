@@ -121,7 +121,7 @@ namespace DotFuzzy
             double b = this.x3 - this.x0;
             double c = this.x1 - this.x0;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.x0; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.x0;
         }
 
         /// <summary>

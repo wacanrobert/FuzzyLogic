@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using WacanFuzzyLogic.DotFuzzy;
 
 namespace DotFuzzy
 {
@@ -183,7 +182,7 @@ namespace DotFuzzy
 
                 string[] tokens = fuzzyRule.Text.Split();
                 MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(tokens[tokens.Length - 1]);
-
+                
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;
             }
@@ -246,7 +245,7 @@ namespace DotFuzzy
                 }
                 else
                     xmlTextWriter.WriteStartElement("FUZZIFY");
-
+                
                 xmlTextWriter.WriteAttributeString("NAME", linguisticVariable.Name);
 
                 foreach (MembershipFunction membershipFunction in linguisticVariable.MembershipFunctionCollection)
@@ -276,7 +275,7 @@ namespace DotFuzzy
                 xmlTextWriter.WriteAttributeString("TEXT", fuzzyRule.Text);
                 xmlTextWriter.WriteEndElement();
             }
-
+            
             xmlTextWriter.WriteEndElement();
 
             xmlTextWriter.WriteEndElement();
