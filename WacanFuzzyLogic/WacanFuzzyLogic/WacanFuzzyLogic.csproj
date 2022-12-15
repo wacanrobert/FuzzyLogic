@@ -8,8 +8,8 @@
     <ProjectGuid>{9B975D55-BD28-40E5-8351-5D81DCC4DC99}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AliacFuzzyLogic</RootNamespace>
-    <AssemblyName>AliacFuzzyLogic</AssemblyName>
+    <RootNamespace>WacanFuzzyLogic</RootNamespace>
+    <AssemblyName>WacanFuzzyLogic</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
